@@ -1,0 +1,40 @@
+.login {
+    &__grid {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        @include flex(flex-start, flex-start);
+        gap: 0 30px;
+    }
+    &__column {
+        flex-grow: 1;
+    }
+    @include sp {
+        &__grid {
+            flex-direction: column;
+        }
+    }
+}
+.newCustomer {
+    padding: 20px;
+    background: $gray-light;
+    &__heading {
+        font-size: 2rem;
+        color: #000;
+        margin-bottom: 10px;
+    }
+    &__fact {
+        list-style-type: disc;
+        padding-left: 35px;
+        margin: 5px 0 15px;
+        li {
+            margin-bottom: 5px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    @include sp {
+        margin-top: 30px;
+    }
+}

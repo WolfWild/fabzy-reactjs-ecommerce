@@ -1,0 +1,109 @@
+.cartTable {
+    margin-bottom: 45px;
+    &__list {
+        width: 100%;
+        caption-side: bottom;
+        border-collapse: collapse;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: grey;
+        thead {
+            tr {
+                background: $mainColor;
+            }
+            th {
+                font-weight: 500;
+                white-space: nowrap;
+                text-align: center;
+                text-transform: capitalize;
+                padding: 12px 20px;
+                color: #fff;
+                border-right: 1px solid $borderColor;
+            }
+        }
+        tbody {
+            tr {
+                border-bottom: 1px solid $borderColor;
+            }
+            td {
+                padding: 12px 20px;
+                text-align: center;
+                border-right: 1px solid $borderColor;
+                &:last-child {
+                    border-right: none;
+                }
+            }
+        }
+    }
+    &__action {
+        button {
+            font-size: 1.8rem;
+            color: #ff3838;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    }
+}
+.cartTtl {
+    padding: 18px 0px;
+    margin-bottom: 30px;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-bottom: 1px solid $borderColor;
+    font-size: 2.4rem;
+    &:before {
+        position: absolute;
+        content: '';
+        bottom: -1px;
+        left: 0px;
+        width: 50px;
+        height: 2px;
+        background: $mainColor;
+    }
+    h4 {
+        text-transform: capitalize;
+    }
+}
+.cartScroll {
+    overflow-x: scroll;
+}
+.cartCharge {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto 45px;
+    ul {
+        border-top: 3px solid $mainColor;
+    }
+    li {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid $borderColor;
+        &:last-child {
+            border-bottom: none;
+            span {
+                font-size: 2rem;
+                color: $mainColor;
+            }
+        }
+    }
+    span {
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+}
+.cartCheckout {
+    text-align: center;
+}

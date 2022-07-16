@@ -1,0 +1,86 @@
+.footer {
+    border-top: 1px solid $borderColor;
+    &__bottom {
+        height: 50px;
+        background: $mainColor;
+        p {
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+        @include sp {
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+    &__logo {
+        img {
+            width: 222px;
+            height: auto;
+        }
+    }
+    &__desc {
+        font-size: 1.4rem;
+        line-height: 30px;
+
+        margin-top: 10px;
+    }
+    &__ttl {
+        font-size: 1.8rem;
+        line-height: 26px;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    &__list {
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            margin-left: 10px;
+            line-height: 24px;
+        }
+    }
+    &__info {
+        li {
+            @include flex(flex-start, flex-start);
+            margin-bottom: 10px;
+        }
+        svg {
+            color: $mainColor;
+            margin-top: 6px;
+        }
+        span {
+            margin-left: 10px;
+            line-height: 24px;
+        }
+    }
+    &__grid {
+        @include flex(flex-start, flex-start);
+    }
+    &__column {
+        width: 25%;
+        padding: 50px 0;
+        border-right: 1px solid $borderColor;
+        &:last-child {
+            border-right: none;
+        }
+        &--center {
+            @include flex(flex-start, center);
+        }
+    }
+    @include tablet {
+        padding-top: 50px;
+        &__grid {
+            flex-direction: column;
+        }
+        &__column {
+            width: 100%;
+            justify-content: flex-start;
+            padding: 0;
+            margin-bottom: 30px;
+            border: none;
+        }
+    }
+}

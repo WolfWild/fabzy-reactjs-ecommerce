@@ -1,0 +1,25 @@
+.blogDetail-page {
+    .blogDetail {
+        &__thumb {
+            max-width: 585px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        &__heading {
+            font-size: 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 24px;
+            text-align: center;
+        }
+        &__public {
+            text-align: center;
+            display: block;
+            margin-top: 5px;
+            color: #878787;
+        }
+        &__content {
+            margin-top: 20px;
+        }
+    }
+}

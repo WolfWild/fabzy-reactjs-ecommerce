@@ -1,0 +1,124 @@
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    @media only screen and (max-width: 1300px) {
+        padding: 0 15px;
+    }
+}
+
+.section {
+    padding: 50px 0;
+    &__ttl {
+        font-size: 4rem;
+        position: relative;
+        line-height: 26px;
+        text-transform: uppercase;
+        font-weight: 300;
+        text-align: center;
+        h2 {
+            display: inline-block;
+        }
+        span {
+            font-weight: 500;
+        }
+        &--bgWhite {
+            h2 {
+                background: #fff;
+                padding: 5px 30px;
+                position: relative;
+                z-index: 1;
+            }
+            &::before {
+                background: #ededed none repeat scroll 0 0;
+                bottom: 0;
+                content: '';
+                height: 1px;
+                left: 0;
+                margin: auto;
+                position: absolute;
+                right: auto;
+                top: 5px;
+                width: 100%;
+                z-index: 0;
+            }
+        }
+        @include sp {
+            font-size: 2.2rem;
+        }
+    }
+    &__content {
+        margin-top: 50px;
+    }
+    @include sp {
+        &__content {
+            margin-top: 30px;
+        }
+    }
+}
+
+.notice {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.scrollUp {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right: 20px;
+    bottom: 60px;
+    z-index: 10;
+    font-size: 4rem;
+    color: #000;
+    transition: all 0.3s linear;
+    opacity: 0;
+    pointer-events: none;
+    &:hover {
+        color: $mainColor;
+    }
+    &.is-show {
+        opacity: 1;
+        pointer-events: inherit;
+    }
+}
+
+.productDetail-page .flame__image {
+    .slick-arrow {
+        width: 30px;
+        height: 30px;
+        background: $mainColor;
+        z-index: 1;
+        font-size: 1.6rem;
+        color: #fff;
+        border-radius: 50%;
+        @include flex(center, center);
+        transition: opacity 0.3s linear;
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.home-page .heroSlide {
+    &:hover {
+        .slick-arrow {
+            opacity: 1;
+        }
+    }
+    .slick-arrow {
+        width: 50px;
+        height: 50px;
+        background: $mainColor;
+        z-index: 1;
+        font-size: 1.6rem;
+        color: #fff;
+        border-radius: 50%;
+        opacity: 0;
+        @include flex(center, center);
+        transition: opacity 0.3s linear;
+        &:before {
+            display: none;
+        }
+    }
+}

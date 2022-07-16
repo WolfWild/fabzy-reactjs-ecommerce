@@ -1,0 +1,66 @@
+html {
+    font-size: 62.5%;
+}
+* {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    font-family: 'Poppins', sans-serif;
+    color: #141c34;
+    min-width: 1300px;
+    @include tablet {
+        min-width: 768px;
+    }
+    @include sp {
+        min-width: 375px;
+    }
+}
+a {
+    text-decoration: none;
+    color: unset;
+    &:hover {
+        color: $mainColor;
+    }
+}
+figure {
+    line-height: 0;
+    font-size: 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    -webkit-backface-visibility: hidden;
+    line-height: 0;
+    font-size: 0;
+}
+ul {
+    list-style-type: none;
+}
+strong {
+    font-weight: bold;
+}
+table {
+    border-collapse: collapse;
+    border: none;
+    border-spacing: 0;
+}
+button {
+    border: none;
+    background: none;
+    padding: 0;
+    &:hover {
+        cursor: pointer;
+    }
+}

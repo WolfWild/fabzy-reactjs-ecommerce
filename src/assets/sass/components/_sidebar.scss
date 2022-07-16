@@ -1,0 +1,38 @@
+.widget {
+    border: 1px solid $borderColor;
+    margin-bottom: 30px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &__ttl {
+        background: $gray-light;
+        border-bottom: 1px solid $borderColor;
+        font-size: 1.4rem;
+        line-height: 24px;
+        padding: 10px 15px;
+        color: #000;
+        font-weight: 500;
+    }
+    &__list {
+        padding: 15px;
+    }
+    &__price {
+        padding: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        .form__input {
+            width: calc((100% - 10px) / 2);
+            text-align: center;
+        }
+        .form__error {
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+        .btn {
+            width: 100%;
+        }
+    }
+}

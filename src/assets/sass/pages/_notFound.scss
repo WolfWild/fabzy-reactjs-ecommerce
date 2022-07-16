@@ -1,0 +1,36 @@
+.notFound {
+    text-align: center;
+    &__ttl {
+        font-size: 4rem;
+        line-height: 58px;
+        margin-bottom: 10px;
+        color: $mainColor;
+    }
+    &__img {
+        max-width: 700px;
+        width: 100%;
+        margin: 0 auto 20px;
+    }
+    &__txt {
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        small {
+            font-weight: normal;
+            display: block;
+            font-size: 1.4rem;
+        }
+    }
+    @include sp {
+        &__ttl {
+            font-size: 3rem;
+        }
+        &__txt {
+            font-size: 1.6rem;
+            small {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
