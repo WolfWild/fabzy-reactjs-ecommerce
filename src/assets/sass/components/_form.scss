@@ -112,7 +112,7 @@
         }
     }
     &__quantity {
-        @include flex(center, flex-start);
+        @include flex(center, center);
         span {
             display: inline-block;
             width: 35px;

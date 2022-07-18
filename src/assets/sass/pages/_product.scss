@@ -1,135 +1,135 @@
-.productDetail-page {
-    .flame {
-        @include flex(flex-start, flex-start);
-        gap: 30px;
-        &__image {
-            width: 450px;
-            img {
-                width: 100%;
-                height: auto;
+.productInfo {
+    @include flex(flex-start, flex-start);
+    gap: 30px;
+    &__image {
+        width: 450px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    &__content {
+        flex: 1;
+    }
+    &__heading {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    .rating {
+        margin-top: 15px;
+    }
+    &__category {
+        font-size: 1.4rem;
+        color: #000;
+        display: block;
+        margin-top: 15px;
+        color: $mainColor;
+        padding: 5px 15px;
+        border: 1px solid $mainColor;
+        display: inline-block;
+        margin-right: 5px;
+    }
+    &__info {
+        padding-bottom: 20px;
+        margin-top: 15px;
+        border-bottom: 1px solid $borderColor;
+        dl {
+            @include flex(flex-start, flex-start);
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
             }
         }
-        &__content {
+        dt {
+            width: 100px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        dd {
             flex: 1;
         }
-        &__heading {
-            font-size: 1.8rem;
-            font-weight: 500;
+    }
+    &__price {
+        font-size: 2.4rem;
+        font-weight: 600;
+        color: #000;
+        margin-top: 20px;
+        display: block;
+    }
+    .addToCart {
+        margin-top: 15px;
+    }
+    .form__quantity {
+        margin-right: 10px;
+    }
+    @include tablet {
+        &__image {
+            width: 350px;
         }
-        .rating {
-            margin-top: 15px;
-        }
-        &__category {
-            font-size: 1.4rem;
-            color: #000;
-            display: block;
-            margin-top: 15px;
-            color: $mainColor;
-            padding: 5px 15px;
-            border: 1px solid $mainColor;
-            display: inline-block;
-            margin-right: 5px;
-        }
-        &__info {
-            padding-bottom: 20px;
-            margin-top: 15px;
-            border-bottom: 1px solid $borderColor;
-            dl {
-                @include flex(flex-start, flex-start);
-                margin-bottom: 10px;
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-            dt {
-                width: 100px;
-                font-size: 1.4rem;
-                font-weight: 600;
-            }
-            dd {
-                flex: 1;
-            }
+    }
+    @include sp {
+        flex-direction: column;
+        &__image {
+            width: 100%;
         }
         &__price {
-            font-size: 2.4rem;
-            font-weight: 600;
-            color: #000;
-            margin-top: 20px;
-            display: block;
+            margin-top: 10px;
         }
         .addToCart {
-            margin-top: 15px;
+            margin-top: 5px;
         }
-        .form__quantity {
-            margin-right: 10px;
+    }
+}
+.productDesc {
+    background: $gray-light;
+    padding: 50px;
+    margin-top: 50px;
+    &__ttl {
+        font-size: 2.4rem;
+        line-height: 32px;
+        margin-bottom: 25px;
+        padding: 10px 30px;
+        background: $mainColor;
+        color: #fff;
+        display: inline-block;
+        position: relative;
+        &:after {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            content: '';
+            border-top: 10px solid $mainColor;
+            position: absolute;
+            height: 0;
+            bottom: -9px;
+            left: 50%;
+            transform: translateX(-50%);
         }
-        @include tablet {
-            &__image {
-                width: 350px;
-            }
-        }
-        @include sp {
-            flex-direction: column;
-            &__image {
-                width: 100%;
-            }
-            &__price {
-                margin-top: 10px;
-            }
-            .addToCart {
-                margin-top: 5px;
+    }
+    &__desc {
+        margin-bottom: 10px;
+    }
+    &__ttl01 {
+        font-weight: bold;
+        font-size: 2rem;
+        margin-bottom: 5px;
+    }
+    &__list {
+        list-style-type: disc;
+        padding-left: 30px;
+        li {
+            margin-bottom: 5px;
+            &:last-child {
+                margin-bottom: 0;
             }
         }
     }
-    .box {
-        background: $gray-light;
-        padding: 50px;
-        margin-top: 50px;
+    @include sp {
+        padding: 30px 20px;
+        margin-top: 30px;
         &__ttl {
-            font-size: 2.4rem;
-            line-height: 32px;
-            margin-bottom: 25px;
-            padding: 10px 30px;
-            background: $mainColor;
-            color: #fff;
-            display: inline-block;
-            position: relative;
-            &:after {
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                content: '';
-                border-top: 10px solid $mainColor;
-                position: absolute;
-                height: 0;
-                bottom: -9px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-        &__desc {
-            margin-bottom: 10px;
-        }
-        &__ttl01 {
-            font-weight: bold;
-            font-size: 2rem;
-            margin-bottom: 5px;
-        }
-        &__list {
-            list-style-type: disc;
-            padding-left: 30px;
-            li {
-                margin-bottom: 5px;
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-        }
-        @include sp {
-            padding: 30px 20px;
-            &__ttl {
-                font-size: 1.8rem;
-                padding: 5px 20px;
-            }
+            font-size: 1.8rem;
+            padding: 5px 20px;
         }
     }
 }

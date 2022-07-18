@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 AddToCart.propTypes = {
     onChange: PropTypes.func.isRequired,
+    initQuantity: PropTypes.number,
 };
-
-function AddToCart({ onChange }) {
-    const [quantity, setQuantity] = useState(1);
+function AddToCart({ onChange, initQuantity = 1 }) {
+    const [quantity, setQuantity] = useState(initQuantity);
     const quantityRef = useRef(1);
     const increaseQuantity = () => {
         let newQuantity = Number.parseInt(quantityRef.current.value) + 1;

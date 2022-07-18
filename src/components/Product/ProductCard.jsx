@@ -3,10 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Rating from '../Rating';
+import { useSelector, useDispatch } from 'react-redux';
+import { openModal } from '../../features/modalProduct/modalProductSlice';
 function ProductCard({ image, title, rating, price, slug }) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleNavigateClick = () => {
         navigate(`/product/${slug}`);
+    };
+    const handleOpenModalProduct = (slug) => {
+        dispatch(openModal({ slug }));
     };
     return (
         <div className="product__card">
@@ -15,15 +21,15 @@ function ProductCard({ image, title, rating, price, slug }) {
                     <img src={image} alt="" />
                 </Link>
                 <figcaption className="product__media">
-                    <span className="product__media--quickview">
+                    <span className="product__media--quickview" onClick={() => handleOpenModalProduct(slug)}>
                         <FontAwesomeIcon icon={faEye} />
                     </span>
-                    <span className="product__media--wishlist">
+                    {/* <span className="product__media--wishlist">
                         <FontAwesomeIcon icon={faHeart} />
                     </span>
                     <span className="product__media--compare">
                         <FontAwesomeIcon icon={faFile} />
-                    </span>
+                    </span> */}
                 </figcaption>
             </figure>
             <div className="product__content">

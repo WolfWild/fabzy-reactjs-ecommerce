@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruckFast, faGift, faPhone, faCartPlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import SearchForm from './components/SearchForm';
+import CartTop from './components/CartTop';
 
 function Header(props) {
     const headerRef = useRef(null);
@@ -108,11 +109,7 @@ function Header(props) {
                                 </div>
                             </div>
                             <div className="header__widget--right">
-                                <Link to="cart" className="cartHeader">
-                                    <FontAwesomeIcon icon={faCartPlus} />
-                                    <p className="cartHeader__ttl">view cart</p>
-                                    <span className="cartHeader__number">0</span>
-                                </Link>
+                                <CartTop />
                                 <SearchForm />
                             </div>
                         </div>

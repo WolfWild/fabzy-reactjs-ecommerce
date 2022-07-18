@@ -1,12 +1,15 @@
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { getProductBySlug } from '../../assets/data/products';
 import Rating from '../../components/Rating';
 import Visual from '../../components/Visual';
+import { addItemToCart } from '../../features/cart/cartSlice';
 import FormAddToCart from './components/FormAddToCart';
+import { toast } from 'react-toastify';
 function SlickNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -26,6 +29,7 @@ function SlickPrevArrow(props) {
 }
 function ProductDetail(props) {
     const [product, setProduct] = useState({});
+    const dispatch = useDispatch();
     let { slug } = useParams();
     const settings = {
         dots: false,
@@ -42,15 +46,29 @@ function ProductDetail(props) {
     }, [slug]);
 
     const handleAddToCart = (value) => {
-        console.log(value);
+        const action = addItemToCart({
+            id: product.id,
+            product,
+            quantity: value,
+        });
+        dispatch(action);
+        toast.success('Add product successfully!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
     return (
         <main className="productDetail-page">
             <Visual title={product.title} />
             <div className="section">
                 <div className="container">
-                    <section className="flame">
-                        <div className="flame__image">
+                    <section className="productInfo">
+                        <div className="productInfo__image">
                             <Slider className="slider__top" {...settings}>
                                 {product.images &&
                                     product.images.map((item, index) => (
@@ -60,16 +78,16 @@ function ProductDetail(props) {
                                     ))}
                             </Slider>
                         </div>
-                        <div className="flame__content">
-                            <h2 className="flame__heading">{product.title}</h2>
+                        <div className="productInfo__content">
+                            <h2 className="productInfo__heading">{product.title}</h2>
                             <Rating star={3} />
                             {product.category &&
                                 product.category.map((item, index) => (
-                                    <Link key={index} to="" className="flame__category">
+                                    <Link key={index} to="" className="productInfo__category">
                                         {item.name}
                                     </Link>
                                 ))}
-                            <div className="flame__info">
+                            <div className="productInfo__info">
                                 {product.sku && (
                                     <dl>
                                         <dt>SKU:</dt>
@@ -89,19 +107,19 @@ function ProductDetail(props) {
                                     </dl>
                                 )}
                             </div>
-                            {product.price && <span className="flame__price">${product.price}</span>}
+                            {product.price && <span className="productInfo__price">${product.price}</span>}
                             <FormAddToCart onChange={handleAddToCart} />
                         </div>
                     </section>
-                    <section className="box">
-                        <h3 className="box__ttl">Description</h3>
-                        <p className="box__desc">
+                    <section className="productDesc">
+                        <h3 className="productDesc__ttl">Description</h3>
+                        <p className="productDesc__desc">
                             DESCRIPTION Enjoy wireless convenience and crystal-clear audio when talking on your iPhone.
                             The iPhone Bluetooth Headset features a single button that lets you make and receive phone
                             calls simply and intuitively. And the innovative design is sure to turn a few heads.
                         </p>
-                        <h4 className="box__ttl01">Features</h4>
-                        <ul className="box__list">
+                        <h4 className="productDesc__ttl01">Features</h4>
+                        <ul className="productDesc__list">
                             <li>Up to 5.5 hours of talk time; up to 72 hours of standby time*</li>
                             <li>Lightweight earpiece for a secure, comfortable fit in left or right ear</li>
                             <li>Convenient autopairing with iPhone</li>

@@ -9,7 +9,7 @@ function Visual({ title }) {
         <div className="visual">
             <div className="container">
                 <h1 className="visual__heading">{title}</h1>
-                <Breadcrumb />
+                {/* <Breadcrumb /> */}
             </div>
         </div>
     );
