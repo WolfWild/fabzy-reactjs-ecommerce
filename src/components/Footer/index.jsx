@@ -13,6 +13,7 @@ import React, { useEffect, useRef } from 'react';
 import Subscribe from '../Subscribe';
 function Footer(props) {
     const backTopRef = useRef(null);
+
     useEffect(() => {
         const backTopShow = () => {
             if (window.scrollY > 100) {
@@ -26,9 +27,11 @@ function Footer(props) {
             window.removeEventListener('scroll', backTopShow);
         };
     }, []);
+
     const goToTop = () => {
         window.scroll({ top: 0, behavior: 'smooth' });
     };
+
     return (
         <>
             <Subscribe />

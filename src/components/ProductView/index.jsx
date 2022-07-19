@@ -1,11 +1,11 @@
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import Rating from '../../components/Rating';
 import FormAddToCart from '../../pages/ProductDetail/components/FormAddToCart';
-import PropTypes from 'prop-types';
-import { faArrowLeft, faArrowRight, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 ProductView.propTypes = {
     product: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
