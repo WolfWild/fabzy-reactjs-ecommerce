@@ -1,3 +1,2 @@
 # Link Demo
-
-[demo](http://localhost:3000)
+[https://fabzy-reactjs-ecommerce.vercel.app/](https://fabzy-reactjs-ecommerce.vercel.app/)
