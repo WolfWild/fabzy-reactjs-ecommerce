@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import Rating from '../../components/Rating';
-import FormAddToCart from '../../pages/ProductDetail/components/FormAddToCart';
-ProductView.propTypes = {
+import FormAddToCart from '../../pages/SingleProduct/components/FormAddToCart';
+import Rating from '../Rating';
+ProductDetail.propTypes = {
     product: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
 };
@@ -27,7 +27,7 @@ function SlickPrevArrow(props) {
         </div>
     );
 }
-function ProductView({ product, onSubmit }) {
+function ProductDetail({ product, onSubmit }) {
     const settings = {
         dots: false,
         slidesToShow: 1,
@@ -40,7 +40,7 @@ function ProductView({ product, onSubmit }) {
         onSubmit(value);
     };
     return (
-        <main className="productDetail-page">
+        <>
             <section className="productInfo">
                 <div className="productInfo__image">
                     <Slider className="slider__top" {...settings}>
@@ -88,9 +88,8 @@ function ProductView({ product, onSubmit }) {
             <section className="productDesc">
                 <h3 className="productDesc__ttl">Description</h3>
                 <p className="productDesc__desc">
-                    DESCRIPTION Enjoy wireless convenience and crystal-clear audio when talking on your iPhone. The
-                    iPhone Bluetooth Headset features a single button that lets you make and receive phone calls simply
-                    and intuitively. And the innovative design is sure to turn a few heads.
+                    DESCRIPTION Enjoy wireless convenience and crystal-clear audio when talking on your iPhone. The iPhone Bluetooth Headset features a single button that lets you
+                    make and receive phone calls simply and intuitively. And the innovative design is sure to turn a few heads.
                 </p>
                 <h4 className="productDesc__ttl01">Features</h4>
                 <ul className="productDesc__list">
@@ -100,8 +99,8 @@ function ProductView({ product, onSubmit }) {
                     <li>Stylish anodized aluminum casing</li>
                 </ul>
             </section>
-        </main>
+        </>
     );
 }
 
-export default ProductView;
+export default ProductDetail;

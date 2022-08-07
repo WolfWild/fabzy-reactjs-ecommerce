@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../components/Layout';
-import Blog from '../pages/Blog';
-import BlogDetail from '../pages/BlogDetail';
+import ArchiveBlog from '../pages/ArchiveBlog';
+import ArchiveProduct from '../pages/ArchiveProduct';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
-import Product from '../pages/Product';
-import ProductDetail from '../pages/ProductDetail';
 import Register from '../pages/Register';
 import Search from '../pages/Search';
+import SingleBlog from '../pages/SingleBlog';
+import SingleProduct from '../pages/SingleProduct';
 
 RoutesConfig.propTypes = {};
 
@@ -18,26 +18,10 @@ function RoutesConfig(props) {
     return (
         <Routes>
             <Route
-                path="/"
+                index
                 element={
                     <Layout>
                         <Home />
-                    </Layout>
-                }
-            />
-            <Route
-                path="/blog"
-                element={
-                    <Layout>
-                        <Blog />
-                    </Layout>
-                }
-            />
-            <Route
-                path="/blog/:slug"
-                element={
-                    <Layout>
-                        <BlogDetail />
                     </Layout>
                 }
             />
@@ -58,22 +42,6 @@ function RoutesConfig(props) {
                 }
             />
             <Route
-                path="/product"
-                element={
-                    <Layout>
-                        <Product />
-                    </Layout>
-                }
-            />
-            <Route
-                path="/product/:slug"
-                element={
-                    <Layout>
-                        <ProductDetail />
-                    </Layout>
-                }
-            />
-            <Route
                 path="/cart"
                 element={
                     <Layout>
@@ -89,7 +57,52 @@ function RoutesConfig(props) {
                     </Layout>
                 }
             />
-            <Route path="*" element={<Layout>{<NotFound />}</Layout>} />
+            <Route path="/blog">
+                <Route
+                    index
+                    element={
+                        <Layout>
+                            <ArchiveBlog />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path=":slug"
+                    element={
+                        <Layout>
+                            <SingleBlog />
+                        </Layout>
+                    }
+                />
+            </Route>
+
+            <Route path="product">
+                <Route
+                    index
+                    element={
+                        <Layout>
+                            <ArchiveProduct />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path=":slug"
+                    element={
+                        <Layout>
+                            <SingleProduct />
+                        </Layout>
+                    }
+                />
+            </Route>
+
+            <Route
+                path="*"
+                element={
+                    <Layout>
+                        <NotFound />
+                    </Layout>
+                }
+            />
         </Routes>
     );
 }

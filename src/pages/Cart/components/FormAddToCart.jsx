@@ -10,7 +10,6 @@ FormAddToCart.propTypes = {
 
 function FormAddToCart(props) {
     const { onChange, productId, initQuantity } = props;
-    console.log(initQuantity);
     const handleQuantityChange = (value) => {
         const newValue = {
             id: productId,

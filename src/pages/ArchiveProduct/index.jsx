@@ -1,32 +1,33 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import productData, { getProduct } from '../../assets/data/products';
 import FormSort from '../../components/Form/FormSort';
 import ProductGrid from '../../components/Product/ProductGrid';
 import Visual from '../../components/Visual';
-import ProductFilter from '../Product/components/ProductFilter';
-import productData from '../../assets/data/products';
-const sortOptions = {
-    newest: (arr) => {
-        return arr.sort((a, b) => a.id - b.id);
-    },
-    bestselling: (arr) => {
-        return arr.sort((a, b) => b.rating - a.rating);
-    },
-    alphaasc: (arr) => {
-        return arr.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
-    },
-    alphadesc: (arr) => {
-        return arr.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
-    },
-    priceasc: (arr) => {
-        return arr.sort((a, b) => a.price - b.price);
-    },
-    pricedesc: (arr) => {
-        return arr.sort((a, b) => b.price - a.price);
-    },
-};
+import ProductFilter from '../ArchiveProduct/components/ProductFilter';
 
-const handleSort = (sortOptions, type, arr) => {
-    return sortOptions[type](arr);
+const sortProduct = (type) => {
+    const sortOptions = {
+        newest: (arr) => {
+            return arr.sort((a, b) => a.id - b.id);
+        },
+        bestselling: (arr) => {
+            return arr.sort((a, b) => b.rating - a.rating);
+        },
+        alphaasc: (arr) => {
+            return arr.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+        },
+        alphadesc: (arr) => {
+            return arr.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
+        },
+        priceasc: (arr) => {
+            return arr.sort((a, b) => a.price - b.price);
+        },
+        pricedesc: (arr) => {
+            return arr.sort((a, b) => b.price - a.price);
+        },
+    };
+
+    return sortOptions[type];
 };
 
 const initFiter = {
@@ -39,6 +40,7 @@ const initFiter = {
 function Product(props) {
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState(initFiter);
+
     const updateProduct = useCallback(() => {
         let resultProduct = productData;
         if (filter.salePrice_lte > filter.salePrice_gte) {
@@ -67,9 +69,10 @@ function Product(props) {
         }
         setProducts(resultProduct);
     }, [filter]);
+
     useEffect(() => {
-        const productList = productData;
-        setProducts(productList);
+        const allProducts = getProduct();
+        setProducts(allProducts);
     }, []);
 
     useEffect(() => {
@@ -77,13 +80,14 @@ function Product(props) {
     }, [updateProduct]);
 
     const handleSortChange = (value) => {
-        const data = handleSort(sortOptions, value, products);
+        const data = sortProduct(value)(products);
         setProducts([...data]);
     };
 
     const handleFilterChange = (values) => {
         setFilter(values);
     };
+
     return (
         <main className="product-page">
             <Visual title="Product" />
@@ -95,11 +99,7 @@ function Product(props) {
                         </aside>
                         <main className="layout__content">
                             <FormSort onSubmit={handleSortChange} />
-                            {products.length > 0 ? (
-                                <ProductGrid products={products} />
-                            ) : (
-                                <p className="notice">Product Not Found</p>
-                            )}
+                            {products.length > 0 ? <ProductGrid products={products} /> : <p className="notice">Product Not Found</p>}
                         </main>
                     </div>
                 </div>

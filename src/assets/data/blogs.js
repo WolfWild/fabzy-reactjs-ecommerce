@@ -49,4 +49,14 @@ const blogs = [
     },
 ];
 
+export const getBlogs = () => {
+    const newBlogs = [...blogs];
+    return newBlogs;
+};
+
+export const getBlogBySlug = (slug) => {
+    const newBlogs = [...blogs];
+    return newBlogs.filter((item) => item.slug === slug);
+};
+
 export default blogs;

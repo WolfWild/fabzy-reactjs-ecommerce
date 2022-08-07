@@ -481,7 +481,18 @@ const products = [
 ];
 
 export const getProductBySlug = (slug) => {
-    return products.filter((item) => item.slug === slug);
+    const newProducts = [...products];
+    return newProducts.filter((item) => item.slug === slug);
+};
+
+export const getProduct = () => {
+    const newProducts = [...products];
+    return newProducts;
+};
+
+export const getTopRatingProduct = () => {
+    const newProducts = [...products];
+    return newProducts.sort((a, b) => b.rating - a.rating).slice(0, 8);
 };
 
 export default products;

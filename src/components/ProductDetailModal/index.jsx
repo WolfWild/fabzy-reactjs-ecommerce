@@ -6,8 +6,8 @@ import { toast } from 'react-toastify';
 import { getProductBySlug } from '../../assets/data/products';
 import { addItemToCart } from '../../features/cart/cartSlice';
 import { closeModal } from '../../features/modalProduct/modalProductSlice';
-import ProductView from '../ProductView';
-ProductViewModal.propTypes = {};
+import ProductDetail from '../ProductDetail';
+ProductDetailModal.propTypes = {};
 
 const initProduct = {
     id: '',
@@ -27,7 +27,7 @@ const initProduct = {
     tag: [],
     rating: 4,
 };
-function ProductViewModal(props) {
+function ProductDetailModal(props) {
     const checkModalSlug = useSelector((state) => state.modalProduct.slug);
     const dispatch = useDispatch();
     const [product, setProduct] = useState(initProduct);
@@ -66,7 +66,7 @@ function ProductViewModal(props) {
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <div className="modal__content">
-                    <ProductView product={product} onSubmit={handleAddToCartSubmit} />
+                    <ProductDetail product={product} onSubmit={handleAddToCartSubmit} />
                 </div>
             </div>
             <div className="modal__overlay" onClick={handleCloseModalProduct}></div>
@@ -74,4 +74,4 @@ function ProductViewModal(props) {
     );
 }
 
-export default ProductViewModal;
+export default ProductDetailModal;

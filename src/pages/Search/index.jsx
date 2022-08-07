@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import FormSort from '../../components/Form/FormSort';
+import { useLocation } from 'react-router-dom';
+import productData from '../../assets/data/products';
 import ProductGrid from '../../components/Product/ProductGrid';
 import Visual from '../../components/Visual';
-import ProductFilter from '../Product/components/ProductFilter';
-import productData from '../../assets/data/products';
-import { useLocation } from 'react-router-dom';
 Search.propTypes = {};
 
 function Search(props) {
     const [products, setProducts] = useState([]);
     const location = useLocation();
-    console.log(location);
     const updateProduct = () => {
         let resultProduct = productData;
-        resultProduct = resultProduct.filter((item) =>
-            item.title.toLowerCase().includes(location.state.searchValue.toLowerCase()),
-        );
+        resultProduct = resultProduct.filter((item) => item.title.toLowerCase().includes(location.state.searchValue.toLowerCase()));
         setProducts(resultProduct);
     };
     useEffect(() => {

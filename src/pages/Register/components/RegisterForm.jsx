@@ -1,6 +1,7 @@
 import React from 'react';
 import InputField from '../../../components/Form/InputField';
 import { Controller, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 RegisterForm.propTypes = {};
 function RegisterForm(props) {
     const {
@@ -69,6 +70,15 @@ function RegisterForm(props) {
     };
     const handleSubmitForm = (values) => {
         console.log(values);
+        toast.success('Register Successfully!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
     return (
         <form className="registerForm" onSubmit={handleSubmit(handleSubmitForm)}>
@@ -78,9 +88,7 @@ function RegisterForm(props) {
                         name="fullName"
                         control={control}
                         rules={registerRules.fullName}
-                        render={({ field }) => (
-                            <InputField {...field} checkError={!!errors?.fullName} type="text" label="Full Name" />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.fullName} type="text" label="Full Name" />}
                     />
                     {errors?.fullName && <span className="form__error">{errors?.fullName.message}</span>}
                 </div>
@@ -89,9 +97,7 @@ function RegisterForm(props) {
                         name="email"
                         control={control}
                         rules={registerRules.email}
-                        render={({ field }) => (
-                            <InputField {...field} checkError={!!errors?.email} type="text" label="Email" />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.email} type="text" label="Email" />}
                     />
                     {errors?.email && <span className="form__error">{errors?.email.message}</span>}
                 </div>
@@ -100,9 +106,7 @@ function RegisterForm(props) {
                         name="phone"
                         control={control}
                         rules={registerRules.phone}
-                        render={({ field }) => (
-                            <InputField {...field} checkError={!!errors?.phone} type="text" label="Phone" />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.phone} type="text" label="Phone" />}
                     />
                     {errors?.phone && <span className="form__error">{errors?.phone.message}</span>}
                 </div>
@@ -111,9 +115,7 @@ function RegisterForm(props) {
                         name="address"
                         control={control}
                         rules={registerRules.address}
-                        render={({ field }) => (
-                            <InputField {...field} checkError={!!errors?.address} type="text" label="Address" />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.address} type="text" label="Address" />}
                     />
                     {errors?.address && <span className="form__error">{errors?.address.message}</span>}
                 </div>
@@ -122,9 +124,7 @@ function RegisterForm(props) {
                         name="password"
                         control={control}
                         rules={registerRules.password}
-                        render={({ field }) => (
-                            <InputField {...field} checkError={!!errors?.password} type="password" label="Password" />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.password} type="password" label="Password" />}
                     />
                     {errors?.password && <span className="form__error">{errors?.password.message}</span>}
                 </div>
@@ -133,14 +133,7 @@ function RegisterForm(props) {
                         name="repeatPassword"
                         control={control}
                         rules={registerRules.repeatPassword}
-                        render={({ field }) => (
-                            <InputField
-                                {...field}
-                                checkError={!!errors?.repeatPassword}
-                                type="password"
-                                label="Repeat Password"
-                            />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.repeatPassword} type="password" label="Repeat Password" />}
                     />
                     {errors?.repeatPassword && <span className="form__error">{errors?.repeatPassword.message}</span>}
                 </div>

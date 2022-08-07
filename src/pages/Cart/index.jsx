@@ -1,12 +1,11 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import AddToCart from '../../components/Form/AddToCart';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import Visual from '../../components/Visual';
 import { removeItemFromCart, updateItemOnCart } from '../../features/cart/cartSlice';
 import FormAddToCart from './components/FormAddToCart';
-import { toast } from 'react-toastify';
 Cart.propTypes = {};
 
 function Cart(props) {
@@ -48,10 +47,7 @@ function Cart(props) {
                     {cartItems.length > 0 ? (
                         <>
                             <div className="cartTtl">
-                                <h4>
-                                    Your Cart (
-                                    {cartItems.length == 1 ? `${cartItems.length} item` : `${cartItems.length}  items`})
-                                </h4>
+                                <h4>Your Cart ({cartItems.length == 1 ? `${cartItems.length} item` : `${cartItems.length}  items`})</h4>
                             </div>
                             <div className="cartScroll">
                                 <div className="cartTable">
@@ -71,21 +67,12 @@ function Cart(props) {
                                                     cartItems.map((item) => (
                                                         <tr key={item.id}>
                                                             <td className="cartTable__product">
-                                                                <img
-                                                                    src={item.product.images[0]}
-                                                                    alt={item.product.title}
-                                                                    width="100"
-                                                                    height="auto"
-                                                                />
+                                                                <img src={item.product.images[0]} alt={item.product.title} width="100" height="auto" />
                                                             </td>
                                                             <td className="cartTable__name">{item.product.title}</td>
                                                             <td className="cartTable__price"> ${item.product.price}</td>
                                                             <td className="cartTable__quantity">
-                                                                <FormAddToCart
-                                                                    onChange={handleQuantityUpdate}
-                                                                    productId={item.id}
-                                                                    initQuantity={item.quantity}
-                                                                />
+                                                                <FormAddToCart onChange={handleQuantityUpdate} productId={item.id} initQuantity={item.quantity} />
                                                             </td>
                                                             <td className="cartTable__action">
                                                                 <button onClick={() => handleRemoveItem(item.id)}>

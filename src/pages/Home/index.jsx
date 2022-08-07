@@ -1,39 +1,29 @@
-import { faStar, faEye, faHeart, faFile, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { getBlogs } from '../../assets/data/blogs';
+import { getProduct, getTopRatingProduct } from '../../assets/data/products';
+import ArticleGrid from '../../components/Article/ArticleGrid';
+import ProductGrid from '../../components/Product/ProductGrid';
+import SecTitle from '../../components/SecTitle';
 import Banner from './components/Banner';
-import Blog from './components/Blog';
-import Featured from './components/Featured';
 import HeroSlide from './components/HeroSlide';
 import Introduce from './components/Introduce';
-import NewProduct from './components/NewProduct';
-import productData from '../../assets/data/products';
-import blogData from '../../assets/data/blogs';
 const dataInit = {
-    productRating: [],
-    productNew: [],
-    blogArticles: [],
+    topRatingProducts: [],
+    newProducts: [],
+    newBlogs: [],
 };
-const getNewProduct = (arr) => {
-    return arr.slice(0, 8);
-};
-const getRatingProduct = (arr) => {
-    return arr.sort((a, b) => b.rating - a.rating).slice(0, 8);
-};
+
 function Home(props) {
     const [data, setData] = useState(dataInit);
-    const products = productData;
-    const blogs = blogData;
     useEffect(() => {
         const fetchData = async () => {
-            const productNew = await getNewProduct(products);
-            const productRating = await getRatingProduct(products);
-            const blogArticles = blogs.slice(0, 4);
+            const newProducts = await getProduct().slice(0, 8);
+            const topRatingProducts = await getTopRatingProduct().slice(0, 8);
+            const newBlogs = await getBlogs().slice(0, 4);
             setData({
-                productRating: productRating,
-                productNew: productNew,
-                blogArticles: blogArticles,
+                newProducts: newProducts,
+                topRatingProducts: topRatingProducts,
+                newBlogs: newBlogs,
             });
         };
         fetchData();
@@ -42,10 +32,31 @@ function Home(props) {
         <main className="home-page">
             <HeroSlide />
             <Introduce />
-            <Featured products={data.productRating} />
+            <section className="featured section">
+                <div className="container">
+                    <SecTitle title="TOP" titleBold="RATED" />
+                    <div className="section__content">
+                        <ProductGrid products={data.topRatingProducts} />
+                    </div>
+                </div>
+            </section>
             <Banner />
-            <NewProduct products={data.productNew} />
-            <Blog articles={data.blogArticles} />
+            <section className="newProduct section">
+                <div className="container">
+                    <SecTitle title="NEW" titleBold="ARRIVALS" />
+                    <div className="section__content">
+                        <ProductGrid products={data.newProducts} />
+                    </div>
+                </div>
+            </section>
+            <section className="blog section">
+                <div className="container">
+                    <SecTitle title="LATEST" titleBold="BLOG" isLine />
+                    <div className="section__content">
+                        <ArticleGrid articles={data.newBlogs} />
+                    </div>
+                </div>
+            </section>
         </main>
     );
 }

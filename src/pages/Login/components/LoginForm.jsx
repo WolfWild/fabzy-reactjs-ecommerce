@@ -2,6 +2,7 @@ import React from 'react';
 import InputField from '../../../components/Form/InputField';
 import { Controller, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 LoginForm.propTypes = {};
 
 function LoginForm(props) {
@@ -40,6 +41,15 @@ function LoginForm(props) {
     };
     const handleSubmitForm = (values) => {
         console.log(values);
+        toast.success('Login Successfully!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
     return (
         <form className="login__column" onSubmit={handleSubmit(handleSubmitForm)}>
@@ -49,9 +59,7 @@ function LoginForm(props) {
                         name="email"
                         control={control}
                         rules={registerRules.email}
-                        render={({ field }) => (
-                            <InputField {...field} checkError={!!errors?.email} type="text" label="Email" />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.email} type="text" label="Email" />}
                     />
                     {errors?.email && <span className="form__error">{errors?.email.message}</span>}
                 </div>
@@ -60,9 +68,7 @@ function LoginForm(props) {
                         name="password"
                         control={control}
                         rules={registerRules.password}
-                        render={({ field }) => (
-                            <InputField {...field} checkError={!!errors?.password} type="password" label="Password" />
-                        )}
+                        render={({ field }) => <InputField {...field} checkError={!!errors?.password} type="password" label="Password" />}
                     />
                     {errors?.password && <span className="form__error">{errors?.password.message}</span>}
                 </div>
