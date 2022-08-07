@@ -18,3 +18,9 @@
   - Login
   - Register
   
+# Functions
+  - Cart
+  - Search
+  - Filter
+  - Sort
+  
