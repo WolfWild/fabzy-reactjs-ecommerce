@@ -6,7 +6,7 @@
   - React Router
   - Redux Toolkit
   - React Hook Form
-  ...
+  - ...
   
 # Pages
   - Home
