@@ -32,7 +32,7 @@ function Home(props) {
         <main className="home-page">
             <HeroSlide />
             <Introduce />
-            <section className="featured section">
+            <section className="featured section master test">
                 <div className="container">
                     <SecTitle title="TOP" titleBold="RATED" />
                     <div className="section__content">

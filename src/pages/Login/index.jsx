@@ -5,7 +5,7 @@ import LoginForm from './components/LoginForm';
 function Login(props) {
     return (
         <main className="login-page">
-            <Visual title="Login" />
+            <Visual title="Login master test" />
             <div className="section">
                 <div className="container">
                     <div className="login__grid">
