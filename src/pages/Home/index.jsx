@@ -35,7 +35,7 @@ function Home(props) {
             <section className="featured section">
                 <div className="container">
                     <SecTitle title="TOP" titleBold="RATED" />
-                    <div className="section__content">
+                    <div className="section__content section__content01">
                         <ProductGrid products={data.topRatingProducts} />
                     </div>
                 </div>
