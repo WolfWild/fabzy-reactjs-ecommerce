@@ -41,7 +41,7 @@ function Cart(props) {
     };
     return (
         <main className="cart-page">
-            <Visual title="Cart" />
+            <Visual title="Cart create modate test" />
             <div className="section test develop">
                 <div className="container">
                     {cartItems.length > 0 ? (
