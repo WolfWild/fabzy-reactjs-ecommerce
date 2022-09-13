@@ -42,7 +42,7 @@ function Cart(props) {
     return (
         <main className="cart-page">
             <Visual title="Cart" />
-            <div className="section">
+            <div className="section test develop">
                 <div className="container">
                     {cartItems.length > 0 ? (
                         <>
