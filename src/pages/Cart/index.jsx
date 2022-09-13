@@ -19,7 +19,7 @@ function Cart(props) {
         dispatch(action);
         toast.error('Remove product successfully!', {
             position: 'top-right',
-            autoClose: 9000,
+            autoClose: 900000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
